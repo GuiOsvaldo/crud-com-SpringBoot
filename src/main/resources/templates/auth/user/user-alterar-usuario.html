@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title> Alterar usuário </title>
+
+ <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+ <script th:src="@{/jquery/jquery.js}"></script>
+ <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<style> 
+.mensagem{
+	color:red;
+}
+
+body{
+		 background: #0b121d;
+		 color:#d7d6d6;
+	 }
+	 
+</style>
+ 
+  </head>
+<body>
+	<div th:insert="fragments/publica-nav :: nav"></div>
+ <di class="container">
+	 <div class="row">
+		 <div class="col">
+ 
+ <h2> Alterar usuário </h2>
+   
+   <div class="alert alert-success alert-dismissible fade show" th:if="${mensagem}"> 
+	   <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+	   <span th:text="${mensagem}"></span>	   
+   </div>
+     <form th:action="@{/usuario/editar/{id}(id=${usuario.id})}" th:object="${usuario}" method="post">
+		 <div class="row mb-3">
+			 <label class="col-sm-1 col-form-label"> Nome:  </label>
+			 <div class="col-sm-5">
+			 <input class="form-control" type="text" th:field="*{nome}">
+		 </div>
+		  
+		  <div class="col-sm-5">
+			  <span class="mensagem" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" th:field="*{nome}">
+		  </div>
+		  </div>
+		  
+		  <div class="row mb-3">
+			 <label class="col-sm-1 col-form-label"> CPF:  </label>
+			 <div class="col-sm-3">
+			 <input class="form-control" type="text" th:field="*{cpf}">
+		 </div>
+		  
+		  <div class="col-sm-5">
+			  <span class="mensagem" th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}" th:field="*{cpf}">
+		  </div>
+		  </div>
+		  
+		  
+		  <div class="row mb-3">
+			 <label class="col-sm-1 col-form-label"> Nascimento:  </label>
+			 <div class="col-sm-2">
+			 <input class="form-control" type="text" th:field="*{dataNascimento}">
+		 </div>
+		  
+		  <div class="col-sm-5">
+			  <span class="mensagem" th:if="${#fields.hasErrors('dataNascimento')}" th:errors="*{dataNascimento}" th:field="*{dataNascimento}">
+		  </div>
+		  </div>
+		  
+		  
+		  <div class="row mb-3">
+			 <label class="col-sm-1 col-form-label"> Email:  </label>
+			 <div class="col-sm-2">
+			 <input class="form-control" type="text" th:field="*{email}">
+		 </div>
+		  
+		  <div class="col-sm-5">
+			  <span class="mensagem" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" th:field="*{email}">
+		  </div>
+		  </div>
+		  
+		  
+		  <div class="row mb-3">
+			 <label class="col-sm-1 col-form-label"> Login:  </label>
+			 <div class="col-sm-2">
+			 <input class="form-control" type="text" th:field="*{login}">
+		 </div>
+		  
+		  <div class="col-sm-5">
+			  <span class="mensagem" th:if="${#fields.hasErrors('login')}" th:errors="*{login}" th:field="*{login}">
+		  </div>
+		  </div>
+		 
+		 
+		 <div class="row mb-3">
+			 <label class="col-sm-1 col-form-label"> Senha:  </label>
+			 <div class="col-sm-2">
+			 <input class="form-control" type="text" th:field="*{passWord}">
+		 </div>
+		  
+		  <div class="col-sm-5">
+			  <span class="mensagem" th:if="${#fields.hasErrors('passWord')}" th:errors="*{passWord}" th:field="*{passWord}">
+		  </div>
+		  </div>
+		    
+		     <input class="btn btn-success" type="submit" value="Alterar"/>
+		 
+	 </form>
+   
+   
+   
+   </div>
+   </div>
+   </div>
+    
+
+
+</body> 	
+		

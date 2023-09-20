@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title> Lista de Usuários </title>
+
+ <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+ <script th:src="@{/jquery/jquery.js}"></script>
+ <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+ 
+ <style> 
+	 body{
+		 background: #0b121d;
+		 color:#d7d6d6;
+	 }
+	 h2{
+		 color: #d7d6d6;
+	 }
+	 
+	 .label{
+		 text-align: center;
+		 align-items: center;
+		 text-justify: center;
+		 font-size:2rem;
+		 color: firebrick;
+	 }
+	 
+	 
+ </style>
+</head>
+<body>
+	<div th:insert="fragments/publica-nav :: nav"></div>
+ <di class="container">
+	 <div class="row">
+		 <div class="col">
+         <h1> Lista de Usuários </h1>
+            <div class="col-4">
+				<input placeholder="Pesquisar usuário..." class="form-control">
+			</div><br>
+          <table class="table table-striped">
+			  <thead>
+				  <tr>
+					  <th> Nome </th>
+					  <th> CPF </th>
+					  <th> Nascimento </th>
+					  <th> Email </th>
+					  <th> Ações </th>
+				  </tr>
+			  </thead>
+			  
+			  <tbody>
+				  <tr th:if="${usuarios.empty}">
+					  <td colspan="8"> <label class="label"> Sem usuários na tabela!</label></td> 					  
+				  </tr>
+				  <tr th:each="usuario : ${usuarios}">
+					  <td><span th:text="${usuario.nome}"> Nome </span></td>
+					  <td><span th:text="${usuario.cpf}"> CPF </span></td> 
+					  <td><span th:text="${#dates.format(usuario.dataNascimento, 'dd/MM/yyyy')}"> Nome </span></td>
+					  <td><span th:text="${usuario.email}"> Email </span></td>
+					  <td> 
+						  <a class="btn btn-outline-danger btn-sm"
+						  th:href="@{/usuario/admin/apagar/{id}(id=${usuario.id})}"
+						  th:data-confirm-delete="|Você gostaria de apagar ${usuario.nome}?|"
+						  onclick="if(!confirm(this.getAttribute('data-confirm-delete'))) return false">
+					         Apagar		  
+						  </a>
+						  
+						  <a class="btn btn-outline-primary btn-sm"
+						  th:href="@{/usuario/editar/{id}(id=${usuario.id})}">
+					         Editar		  
+						  </a>
+					  </td>
+					 
+				  </tr>
+			  </tbody>
+			  
+		  </table>
+ 
+   </div>
+   </div>
+   </div>
+    
+
+
+</body> 	
+		

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title> Biblioteca </title>
+
+ <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+ <script th:src="@{/jquery/jquery.js}"></script>
+ <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+ 
+ <style> 
+	 body{
+		 background: #0b121d;
+		 color:#d7d6d6;
+	 }
+	 h2{
+		 color: #d7d6d6;
+	 }
+	 
+	 
+ </style>
+</head>
+<body>
+	<div th:insert="fragments/publica-nav :: nav"></div>
+ <di class="container">
+	 <div class="row">
+		 <div class="col">
+ 
+ <h2 th:text="${msnBemVindo}"></h2>
+ 
+   </div>
+   </div>
+   </div>
+    
+
+
+</body> 	
+		
